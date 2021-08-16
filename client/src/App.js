@@ -4,7 +4,7 @@ import "./App.css";
 
 import TableContainer from "./components/Table/TableContainer";
 import FormContainer from "./components/Form/FormContainer";
-import SearchForm from "./components/Search/SearchForm";
+import withSearch from "./components/Search/withSearch";
 import AddAnimal from "./components/Table/AddAnimal";
 
 function App() {
@@ -12,35 +12,29 @@ function App() {
   const [selectedAnimal, setSelectedAnimal] = useState({});
   const [showForm, setShowForm] = useState(false);
 
+  const TableWithSearch = withSearch(TableContainer);
+
   return (
     <div className="App">
-      <SearchForm data={data}>
-        {(filteredData) => {
-          return (
-            <>
-              {showForm && (
-                <FormContainer
-                  selectedAnimal={selectedAnimal}
-                  setShowForm={setShowForm}
-                  refresh={refresh}
-                ></FormContainer>
-              )}
-              <TableContainer
-                data={filteredData}
-                hasError={hasError}
-                isLoading={isLoading}
-                setSelectedAnimal={setSelectedAnimal}
-                setShowForm={setShowForm}
-                refresh={refresh}
-              ></TableContainer>
-              <AddAnimal
-                setSelectedAnimal={setSelectedAnimal}
-                setShowForm={setShowForm}
-              />
-            </>
-          );
-        }}
-      </SearchForm>
+      {showForm && (
+        <FormContainer
+          selectedAnimal={selectedAnimal}
+          setShowForm={setShowForm}
+          refresh={refresh}
+        ></FormContainer>
+      )}
+      <TableWithSearch
+        data={data}
+        hasError={hasError}
+        isLoading={isLoading}
+        setSelectedAnimal={setSelectedAnimal}
+        setShowForm={setShowForm}
+        refresh={refresh}
+      ></TableWithSearch>
+      <AddAnimal
+        setSelectedAnimal={setSelectedAnimal}
+        setShowForm={setShowForm}
+      />
     </div>
   );
 }
