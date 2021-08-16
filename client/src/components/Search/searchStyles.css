@@ -1,0 +1,12 @@
+.SearchForm {
+  display: grid;
+  gap: 1rem;
+  align-items: center;
+  grid-template-columns: minmax(max-content, 250px);
+}
+
+@media (min-width: 600px) {
+  .SearchForm {
+    grid-template-columns: repeat(4, max-content);
+  }
+}

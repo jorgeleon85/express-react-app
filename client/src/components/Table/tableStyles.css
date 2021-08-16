@@ -1,0 +1,110 @@
+.Table {
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.TableRow {
+  border-top: 1px solid #d8e2ef;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.TableHeader {
+  display: grid;
+  font-weight: bold;
+  padding-left: 10px;
+  padding-right: 10px;
+  gap: 0 1em;
+  background-color: #f9fafd;
+  grid-template-columns: 20% auto 80px;
+  border-radius: 6px 6px 0 0;
+}
+
+.HeaderCell {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.HeaderCell__actions {
+  text-align: center;
+}
+
+.HeaderCell__species {
+  text-align: right;
+}
+
+.TableRow:nth-child(even) {
+  background-color: #f9fafd;
+}
+
+.TableButton {
+  width: 80%;
+}
+
+.TableButton + .TableButton {
+  margin-top: 10px;
+}
+
+.TableCell {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.AnimalItem {
+  display: grid;
+  grid-template-areas:
+    "name species actions"
+    "age species actions";
+  grid-template-columns: 20% auto 80px;
+  grid-template-rows: 30px auto;
+  gap: 0 1em;
+}
+
+.AnimalItem__name {
+  grid-area: name;
+}
+.AnimalItem__age {
+  grid-area: age;
+}
+.AnimalItem__species {
+  grid-area: species;
+  text-align: right;
+}
+.AnimalItem__actions {
+  grid-area: actions;
+  text-align: center;
+}
+
+.footer-actions {
+  margin: 1rem;
+  text-align: center;
+}
+
+.errorMessage {
+  color: #d8000c;
+  background-color: #fff;
+  border: 1px solid;
+  margin: 1rem 0;
+  padding: 1rem;
+}
+
+@media (min-width: 600px) {
+  .TableHeader {
+    grid-template-columns: 30% auto 150px;
+  }
+
+  .AnimalItem {
+    grid-template-areas: "name age species actions";
+    grid-template-columns: 20% 10% auto 150px;
+    grid-template-rows: auto;
+  }
+
+  .TableButton {
+    width: auto;
+  }
+
+  .TableButton + .TableButton {
+    margin-top: 0;
+    margin-left: 10px;
+  }
+}
